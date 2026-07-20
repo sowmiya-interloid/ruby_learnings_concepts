@@ -516,8 +516,6 @@ total = 0
 pass_count = 0
 fail_count = 0
 
-p "Grades"
-
 students.each do |key, value|
     total += value
     if value >= 50
