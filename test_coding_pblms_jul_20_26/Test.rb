@@ -275,26 +275,16 @@ p "=============================================================================
 # Q15. Pyramid Pattern
 
 
-num=5
+num = 5
 
-i=1
-space=num-1
-star=1
-last=(num*2)-1
-
-(1..num).each do |n|
-    
-    (1..num-n).each do |i|
-        print("  ")
+(1..num).each do |row|
+    (1..(num - row)).each do
+        print "  "
     end
-
-    (1..(num*2)-1).each do |j|
-        print("* ")
+    (1..(2 * row - 1)).each do
+        print "* "
     end
-
     puts
-
-
 end
 
 p "============================================================================================="
@@ -467,19 +457,138 @@ while(i<str.length)
     if(str[i]==first)
         c=c+1
     else
-        new_str=new_str+str[i]+c.to_s
+        new_str=new_str+first+c.to_s
         c=1
         first=str[i]
     end
     i+=1
-    # new_str=new_str+str[i]+c.to_s
-
 end
+
+new_str=new_str+first+c.to_s
 
 
 p new_str
 
+p "============================================================================================="
+
+## Q24. Student Marks Report
 
 
+students={
+"Alice"=>91,
+"Bob"=>78,
+"Chris"=>45,
+"David"=>88,
+"Eva"=>62
+}
+#  Highest Mark
+
+max=0
+max_key=nil
+
+students.each do |key,value|
+    if(max<value)
+        max=value
+        max_key=key
+    end
+end
+
+p "Highest mark #{max_key} ====>>>> #{max} "
 
 
+# Lowest Mark
+
+min=students.values.first
+min_key=students.keys.first
+
+students.each do |key,value|
+    if(min>value)
+        min=value
+        min_key=key
+    end
+end
+
+p "Lowest mark #{min_key} ====>>>> #{min} "
+
+# Average, Pass, Fail
+
+total = 0
+pass_count = 0
+fail_count = 0
+
+p "Grades"
+
+students.each do |key, value|
+    total += value
+    if value >= 50
+        pass_count += 1
+    else
+        fail_count += 1
+    end
+end
+average = total / students.length
+
+p  "Average Mark : #{average}"
+p  "Pass Count : #{pass_count}"
+p "Fail Count : #{fail_count}"
+
+p "============================================================================================="
+
+# Q25. ATM Menu Program
+
+def deposit(balance)
+    puts " Enter deposit amount : "
+    amount = gets.chomp.to_i
+    if(amount > 0)
+        balance += amount
+        puts "Deposit successful."
+    else
+        puts "Invalid amount."
+    end
+    return balance
+end
+
+def withdraw(balance)
+    puts "Enter withdrawal amount: "
+    amount = gets.chomp.to_i
+    if(amount <= 0)
+        puts "Invalid amount."
+    elsif amount > balance
+        puts "Insufficient balance."
+    else
+        balance -= amount
+        puts "Withdrawal successful."
+    end
+    return balance
+end
+
+def check_balance(balance)
+    puts "Current Balance: #{balance}"
+end
+
+balance = 1000
+
+loop do
+    puts "=====ATM MENU ========"
+    puts "1.Deposit"
+    puts "2.Withdraw"
+    puts "3.Check Balance"
+    puts "4.Exit"
+
+    puts "Enter your choice: "
+    choice = gets.chomp.to_i
+    case choice
+    when 1
+    balance = deposit(balance)
+
+    when 2
+    balance = withdraw(balance)
+
+    when 3
+    check_balance(balance)
+
+    when 4
+    puts "Thank you!!!!!!!!!!!!!!"
+    break
+    end
+end
