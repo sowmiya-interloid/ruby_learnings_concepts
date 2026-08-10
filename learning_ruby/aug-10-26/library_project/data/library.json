@@ -1,0 +1,32 @@
+{
+  "books": [
+    {
+      "id": 101,
+      "title": "Ruby",
+      "author": "Matz",
+      "available": true
+    },
+    {
+      "id": 102,
+      "title": "Java",
+      "author": "James",
+      "available": false
+    },
+    {
+      "id": 103,
+      "title": "Python",
+      "author": "Guido",
+      "available": true
+    }
+  ],
+  "members": [
+    {
+      "id": 1,
+      "name": "Kaviya"
+    },
+    {
+      "id": 2,
+      "name": "Priya"
+    }
+  ]
+}
